@@ -1,6 +1,6 @@
 import { Producto } from "../../models";
 
-export async function GET(req) {
+export async function GET() {
     const productos = await Producto.findAll()
     if (productos.length > 0)
         return Response.json(productos)
@@ -25,7 +25,7 @@ export async function POST(req) {
     }
 
     try {
-        const consulta = await Producto.create({
+        await Producto.create({
             codigo: body.codigo,
             nombre: body.nombre,
             stock: body.stock,
@@ -49,7 +49,7 @@ export async function POST(req) {
 export async function DELETE(req) {
     try {
         const body = await req.json()
-        const consulta = await Producto.destroy({
+        await Producto.destroy({
             where: {
                 id: body.id
             }
@@ -73,7 +73,7 @@ export async function PUT(req) {
         const body = await req.json()
         if(body.preparacion){
             try {
-                const consulta = await Producto.update({
+                await Producto.update({
                     preparacion: body.preparacion
                 },
                 {
@@ -96,7 +96,7 @@ export async function PUT(req) {
             })
         }
         }
-        const consulta = await Producto.update(
+        await Producto.update(
             {
                 codigo: body.codigo,
                 nombre: body.nombre,

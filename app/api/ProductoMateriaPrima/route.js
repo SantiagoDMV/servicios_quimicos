@@ -1,20 +1,13 @@
 import { ProductoMateriaPrima } from "../../models";
 import { Op } from "sequelize";
 
-export async function GET(req) {
-    return Response.json({
-        m: 'sds'
-    })
-
-}
-
 export async function POST(req) {
     try {
         const body = await req.json()
 
         if (body.id_materia && body.id_producto) {
             try {
-                const consulta = ProductoMateriaPrima.create({
+                await ProductoMateriaPrima.create({
                     id_materia: body.id_materia,
                     id_producto: body.id_producto,
                     cantidad: body.cantidad
@@ -53,7 +46,7 @@ export async function POST(req) {
 export async function DELETE(req) {
     try {
         const body = await req.json()
-        const consulta = await ProductoMateriaPrima.destroy({
+        await ProductoMateriaPrima.destroy({
             where: {
                 id_materia: body.id
             }
@@ -77,7 +70,7 @@ export async function PUT(req) {
     try {
         const body = await req.json()
 
-        const consulta = ProductoMateriaPrima.update(
+        await ProductoMateriaPrima.update(
             {
                 cantidad: body.cantidad
             },

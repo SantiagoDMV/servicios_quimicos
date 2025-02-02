@@ -15,7 +15,7 @@ export default function TipoCPLista() {
   const [bandera,setBandera]= useState(false)
   return (
     <div>
-    <Ventana children={<FormularioCrearTipoClienteProveedor/>} bandera={bandera} setBandera = {setBandera}/>
+    <Ventana contenido={<FormularioCrearTipoClienteProveedor/>} bandera={bandera} setBandera = {setBandera}/>
       <h2 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
         Tipos:
       </h2>

@@ -1,9 +1,8 @@
-import { where } from "sequelize";
 import { ClienteProveedor } from "../../models/index";
 
 //import { User } from './models/user.model.js';
 
-export async function GET(req) {
+export async function GET() {
     try {
         const clientes = await ClienteProveedor.findAll()
         return Response.json(clientes)
@@ -20,7 +19,7 @@ export async function POST(req) {
     try {
         const body = await req.json()
         //id	nombre	apellido	email	telefono	direccion	creado_en	actualizado_en	eliminado_en	id_tipo	
-        const crearClienteProveedor = await ClienteProveedor.create({
+        await ClienteProveedor.create({
             nombre: body.nombre,
             apellido: body.apellido,
             email: body.email,
@@ -44,7 +43,7 @@ export async function POST(req) {
 export async function PUT(req) {
     try {
         const body = await req.json()
-        const actualizacionRegistro = await ClienteProveedor.update(
+        await ClienteProveedor.update(
             {
                 nombre: body.nombre,
                 apellido: body.apellido,
@@ -75,7 +74,7 @@ export async function PUT(req) {
 export async function DELETE(req){
     try {
         const body = await req.json()
-        const consultaEliminar = await ClienteProveedor.destroy({
+        await ClienteProveedor.destroy({
             where: {
                 id: body.id
             }

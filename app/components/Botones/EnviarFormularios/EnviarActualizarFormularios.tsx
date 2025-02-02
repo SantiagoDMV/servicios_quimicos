@@ -5,7 +5,12 @@ export default function EnviarActualizarFormularios({
   datos,
   setTipo,
   setMensajeAlerta,
-}: any) {
+}: {
+  tipo: string,
+  datos: Record<string,any>,
+  setTipo: React.Dispatch<React.SetStateAction<string>>,
+  setMensajeAlerta: React.Dispatch<React.SetStateAction<string>>  
+}) {
   const enviarDatosProducto = async () => {
     const id = datos.id;
     const codigo = datos.codigo;
@@ -70,8 +75,13 @@ const enviarDatosMateriaPrima = async () => {
       const consulta = await actualizarPreparacionProducto({id, preparacion})
       return consulta
   }
+  
   const enviarDatos = async () => {
-    let consulta: any;
+    type RespuestaApi={
+      mensaje: string;
+      status: number
+    }
+    let consulta: RespuestaApi = {mensaje: 'Error', status:500};
     switch (tipo) {
       case "producto":
         consulta = await enviarDatosProducto();

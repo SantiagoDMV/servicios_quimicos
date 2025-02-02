@@ -1,5 +1,5 @@
 "use client";
-export default function Ventana({ children, bandera, setBandera }: any) {
+export default function Ventana({ contenido, bandera, setBandera }: any) {
   return (
     <>
       {bandera && (
@@ -31,7 +31,7 @@ export default function Ventana({ children, bandera, setBandera }: any) {
                             />
                           </svg>
                         </div>
-                        <div className="p-10">{children}</div>
+                        <div className="p-10">{contenido}</div>
                       </div>
                     </div>
                   </div>

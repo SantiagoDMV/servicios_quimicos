@@ -1,10 +1,11 @@
 import { TipoCliente } from "../../models"
 
-export async function GET(req) {
+export async function GET() {
     try {
         const tipos = await TipoCliente.findAll()
         return Response.json(tipos)
     } catch (error) {
+        console.log('Error al crear el tipo de cliente/proveedor',error)
         return Response.json({
             mensaje: 'Error al crear el tipo de cliente/proveedor'
         })
@@ -13,7 +14,7 @@ export async function GET(req) {
 export async function POST(req) {
     try{
         const body = await req.json()
-        const crearTipo = await TipoCliente.create({
+        await TipoCliente.create({
             nombre: body.nombre
         })
         return Response.json({

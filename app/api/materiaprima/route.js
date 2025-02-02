@@ -1,6 +1,6 @@
 import { MateriaPrima } from "../../models";
 
-export async function GET(req) {
+export async function GET() {
     try{
     const materias = await MateriaPrima.findAll()
     return Response.json(materias)
@@ -29,7 +29,7 @@ export async function POST(req) {
     }
 
     try {
-        const consulta = await MateriaPrima.create({
+        await MateriaPrima.create({
             nombre: body.nombre,
             descripcion: body.descripcion,
             stock: body.stock,
@@ -53,7 +53,7 @@ export async function POST(req) {
 export async function DELETE(req) {
     try {
         const body = await req.json()
-        const consulta = await MateriaPrima.destroy({
+         await MateriaPrima.destroy({
             where: {
                 id: body.id
             }
@@ -75,7 +75,7 @@ export async function DELETE(req) {
 export async function PUT(req) {
     try {
         const body = await req.json()
-        const consulta = await MateriaPrima.update(
+        await MateriaPrima.update(
             {
                 nombre: body.nombre,
                 descripcion: body.descripcion,

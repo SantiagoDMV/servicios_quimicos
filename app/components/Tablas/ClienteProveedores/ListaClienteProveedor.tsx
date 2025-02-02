@@ -3,7 +3,6 @@
 import Ventana from "../../Ventana/Ventana";
 import FormularioActualizarClienteProveedor from "../../Formularios/FormulariosActualizaciones/FormularioClienteProveedor";
 import { useState } from "react";
-import { eliminarClienteProveedor } from "@/app/services";
 import BuscadorRegistrosTabla from "../../Buscador/BuscadorLista/BuscadorRegistrosTabla";
 import VentanaConfirmacionEliminacion from "../../Ventana/VentanaConfirmacionEliminacion";
 export default function ListaClienteProveedor({ clientes }: any) {
@@ -40,7 +39,7 @@ export default function ListaClienteProveedor({ clientes }: any) {
             setBandera={setBanderaEliminar}
           />
       <Ventana
-        children={<FormularioActualizarClienteProveedor cliente={registro} />}
+        contenido={<FormularioActualizarClienteProveedor cliente={registro} />}
         bandera={banderaEditar}
         setBandera={setBanderaEditar}
       />

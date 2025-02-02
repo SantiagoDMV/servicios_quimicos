@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import { eliminarMateriaPrima } from "@/app/services";
 import Ventana from "../../Ventana/Ventana";
 import BuscadorRegistrosTabla from "../../Buscador/BuscadorLista/BuscadorRegistrosTabla";
 import FormularioActualizarMateriasPrimas from "../../Formularios/FormulariosActualizaciones/FormularioMateriasPrimas";
@@ -42,7 +41,7 @@ export default function ListaMateriasPrimas({ producto }: any) {
       />
 
       <Ventana
-        children={<FormularioActualizarMateriasPrimas producto={registro} />}
+        contenido={<FormularioActualizarMateriasPrimas producto={registro} />}
         bandera={banderaEditar}
         setBandera={setBanderaEditar}
       />

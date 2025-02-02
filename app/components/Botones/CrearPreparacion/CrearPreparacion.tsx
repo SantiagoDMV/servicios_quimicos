@@ -1,7 +1,13 @@
 "use client";
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import Ventana from "../../Ventana/Ventana";
-export default function CrearPreparacion({ children, titulo }: any) {
+export default function CrearPreparacion({
+  children,
+  titulo,
+}: {
+  children: ReactNode;
+  titulo: string;
+}) {
   const [bandera, setBandera] = useState<boolean>(false);
   return (
     <div>
@@ -67,24 +73,11 @@ export default function CrearPreparacion({ children, titulo }: any) {
         </svg>
       </span>
       {bandera && (
-        //<div className="bg-transparent fixed min-h-full min-w-full flex items-center justify-center top-0 left-0">
-        <>
-          <Ventana
-            children={children}
-            bandera={bandera}
-            setBandera={setBandera}
-          />
-          {/* <div className="bg-white rounded shadow p-20">
-            {children}
-            </div>
-          <button
-            className="p-3 bg-red-500 text-white rounded-sm"
-            onClick={() => setBandera(!bandera)}
-          >
-            Cerrar
-          </button> */}
-        </>
-        //</div>
+        <Ventana
+          contenido={children}
+          bandera={bandera}
+          setBandera={setBandera}
+        />
       )}
     </div>
   );

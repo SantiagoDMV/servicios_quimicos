@@ -325,9 +325,6 @@ export async function eliminarMateriaPrima(id: number) {
 }
 
 /////////////////////////////////////TABLA PRECIO
-const obtenerPrecioProducto = () => {
-  return;
-};
 
 /////////////////////////////////////MATERIA PRIMA - PRODUCTO
 export async function obtenermateriasPrimasIdProducto(id:any){

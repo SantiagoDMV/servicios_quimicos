@@ -1,7 +1,14 @@
 'use client'
 import { crearProducto,crearClienteProveedor,crearMateriaPrima } from "@/app/services"
 
-export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAlerta}:any){
+export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAlerta}:
+    {
+        tipo: string,
+        datos : Record<string, any>,
+        setTipo: React.Dispatch<React.SetStateAction<string>>,
+        setMensajeAlerta: React.Dispatch<React.SetStateAction<string>>
+    }
+){
     
     const enviarProducto = async () => {
         const codigo = datos.codigo
@@ -38,7 +45,14 @@ export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAle
       
 
     const enviarDatos = async () =>{
-        let consulta:any
+        type RespuestaApi = {
+            mensaje: string,
+            status: number
+        }
+        let consulta: RespuestaApi = {
+            mensaje : 'error',
+            status: 500
+        }
         switch (tipo){
             case 'producto':
                     consulta = await enviarProducto()

@@ -40,7 +40,7 @@ export default function ListaProductos({ producto }: any) {
         setBandera={setBanderaEliminar}
       />
       <Ventana
-        children={<FormularioActualizarProducto producto={registro} />}
+        contenido={<FormularioActualizarProducto producto={registro} />}
         bandera={banderaEditar}
         setBandera={setBanderaEditar}
       />
