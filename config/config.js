@@ -1,8 +1,8 @@
 import { Sequelize } from "sequelize";
 
-const sequelize = new Sequelize('app_sq', 'root', '', {
+const sequelize = new Sequelize('u171237022_sq', 'u171237022_rm', 'GUSTAVo2000', {
   dialectModule: require('mysql2'),
-  host: 'localhost',
+  host: 'brothersstore.ecuabrothers.com',
   port: 3306,
   dialect: 'mysql'
 });
