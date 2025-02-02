@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import VerticalTab from "./components/Tab/Vertical/VerticalTab";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,7 +28,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+
+<div className="md:flex">
+    <VerticalTab/>
+    <div className="p-6 pt-20 md:pt-6 bg-gray-50 text-medium text-black dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
+    {children}
+    </div>
+</div>
+        
       </body>
     </html>
   );
