@@ -1,10 +1,18 @@
 import Crear from "../components/Botones/Crear/Crear";
 import FormularioCrearClienteProveedor from "../components/Formularios/FormularioCrearClienteProveedor/FormularioCrearClienteProveedor";
-import { obtenerClientes } from "../services";
+//import { obtenerClientes } from "../services";
+import { ClienteProveedor } from '../models/index'
 import ListaClienteProveedor from "../components/Tablas/ClienteProveedores/ListaClienteProveedor";
 
-export default async function ClienteProveedor() {
-  const clientes = await obtenerClientes();
+export default async function ClienteProveedorPage() {
+  let clientes
+  try {
+    const clientesRaw = await ClienteProveedor.findAll()
+    clientes = clientesRaw.map(cliente => cliente.toJSON()); // Convierte los objetos Sequelize a JSON puro
+} catch (error) {
+    console.log('Error al intentar obtener los clientes/proveedores ', error)
+    clientes = null  
+}
   return (
     <>
       {clientes ? (

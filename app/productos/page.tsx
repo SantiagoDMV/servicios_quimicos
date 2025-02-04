@@ -1,10 +1,19 @@
 import FormularioCrearProducto from "../components/Formularios/FormularioCrearProducto/FormularioCrearProducto";
 import ListaProductos from "../components/Tablas/Productos/ListaProductos";
 import { obtenerProductos } from "../services";
+import { Producto } from '../models/index'
 import Crear from "../components/Botones/Crear/Crear";
 
 export default async function Productos() {
-  const productos = await obtenerProductos();
+  //const productos = await obtenerProductos();
+  let productos
+  try {
+    const productosRaw = await Producto.findAll()
+    productos = productosRaw.map(producto => producto.toJSON()); // Convierte los objetos Sequelize a JSON puro
+} catch (error) {
+    console.log('Error al intentar obtener los clientes/proveedores ', error)
+    productos = null  
+}
   return (
     <>
       {productos ? (

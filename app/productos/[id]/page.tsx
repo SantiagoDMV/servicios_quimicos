@@ -9,6 +9,8 @@ import ListaAgregarMateriasPrimasProducto from "@/app/components/Tablas/Materias
 import CrearPreparacion from "@/app/components/Botones/CrearPreparacion/CrearPreparacion";
 import FormularioPreparacion from "@/app/components/Formularios/FormulariosActualizaciones/Productos/FormularioPreparacion";
 import FormularioActPreparacion from "@/app/components/Formularios/FormulariosActualizaciones/Productos/FormularioActPreparacion";
+import { Producto, ProductoMateriaPrima } from "../../models/index";
+import { Op } from "sequelize";
 
 export default async function ProductoId({
   params,
@@ -16,8 +18,16 @@ export default async function ProductoId({
   params: Promise<{ [id: string]: string }>;
 }) {
   const parametro = await params;
-  const consulta = await obtenermateriasPrimasIdProducto(parametro.id);
-  const producto = await obtenerProducto(parametro.id);
+  const consultaRaw = await ProductoMateriaPrima.findAll({
+    where: {
+      id_producto: parametro.id,
+      id_materia: { [Op.ne]: null },
+    },
+  });
+  const consulta = consultaRaw.map((c) => c.toJSON());
+  const productoRaw:any = await Producto.findByPk(parseInt(parametro.id));
+  const producto = productoRaw.dataValues
+
   return (
     <>
       {parametro && consulta && producto ? (
@@ -45,7 +55,7 @@ export default async function ProductoId({
         </div> */}
 
             <div className="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow-sm sm:p-8 dark:bg-gray-800 dark:border-gray-700 ">
-              {producto.preparacion ? (
+              {producto && producto.preparacion ? (
                 <div>
                   <p className="text-gray-500">{producto.preparacion}</p>
 
@@ -64,9 +74,9 @@ export default async function ProductoId({
             </div>
           </div>
         </div>
-      ):
-      (<p>Cargando pagina</p>)
-      }
+      ) : (
+        <p>Cargando pagina</p>
+      )}
     </>
   );
 }

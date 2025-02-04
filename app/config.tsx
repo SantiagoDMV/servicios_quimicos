@@ -1,6 +1,6 @@
-export const host = 'https://servicios-quimicos.onrender.com/'
+//export const host = 'https://servicios-quimicos.onrender.com/'
 //export const host = 'http://192.168.3.15:3000'
-//export const host = 'http://localhost:3000'
+export const host = 'http://localhost:3000'
 export const tipoClienteProveedor = '/api/tipoClienteProveedor'
 export const clienteProveedores = '/api/clienteProveedor'
 export const productos = '/api/producto'

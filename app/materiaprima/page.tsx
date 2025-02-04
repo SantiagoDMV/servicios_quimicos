@@ -2,8 +2,17 @@ import Crear from "../components/Botones/Crear/Crear";
 import { obtenerMateriasPrimas } from "../services";
 import FormularioCrearMateriaPrima from "../components/Formularios/FormularioCrearMateriaPrima/FormularioCrearMateriaPrima";
 import ListaMateriasPrimas from "../components/Tablas/MateriasPrimas/ListaMateriasPrimas";
-export default async function MateriaPrima() {
-  const materiasPrimas = await obtenerMateriasPrimas();
+import { MateriaPrima } from '../models/index'
+export default async function MateriaPrimaPage() {
+  let materiasPrimas
+  try {
+    const materiasPrimasRaw = await MateriaPrima.findAll()
+    materiasPrimas = materiasPrimasRaw.map(mp => mp.toJSON()); // Convierte los objetos Sequelize a JSON puro
+} catch (error) {
+    console.log('Error al intentar obtener los clientes/proveedores ', error)
+    materiasPrimas = null  
+}
+  //const materiasPrimas = await obtenerMateriasPrimas();
   return (
     <>
       {materiasPrimas ? (
