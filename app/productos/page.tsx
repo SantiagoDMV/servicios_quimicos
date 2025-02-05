@@ -1,11 +1,12 @@
 import FormularioCrearProducto from "../components/Formularios/FormularioCrearProducto/FormularioCrearProducto";
 import ListaProductos from "../components/Tablas/Productos/ListaProductos";
-import { obtenerProductos } from "../services";
 import { Producto } from '../models/index'
 import Crear from "../components/Botones/Crear/Crear";
+import { headers } from "next/headers";
 
 export default async function Productos() {
   //const productos = await obtenerProductos();
+  headers()
   let productos
   try {
     const productosRaw = await Producto.findAll()
