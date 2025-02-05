@@ -11,12 +11,13 @@ import FormularioPreparacion from "@/app/components/Formularios/FormulariosActua
 import FormularioActPreparacion from "@/app/components/Formularios/FormulariosActualizaciones/Productos/FormularioActPreparacion";
 import { Producto, ProductoMateriaPrima } from "../../models/index";
 import { Op } from "sequelize";
-
+import { headers } from "next/headers";
 export default async function ProductoId({
   params,
 }: {
   params: Promise<{ [id: string]: string }>;
 }) {
+  headers()
   const parametro = await params;
   const consultaRaw = await ProductoMateriaPrima.findAll({
     where: {

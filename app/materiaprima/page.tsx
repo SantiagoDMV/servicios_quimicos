@@ -3,7 +3,9 @@ import { obtenerMateriasPrimas } from "../services";
 import FormularioCrearMateriaPrima from "../components/Formularios/FormularioCrearMateriaPrima/FormularioCrearMateriaPrima";
 import ListaMateriasPrimas from "../components/Tablas/MateriasPrimas/ListaMateriasPrimas";
 import { MateriaPrima } from '../models/index'
+import { headers } from "next/headers";
 export default async function MateriaPrimaPage() {
+  headers()
   let materiasPrimas
   try {
     const materiasPrimasRaw = await MateriaPrima.findAll()

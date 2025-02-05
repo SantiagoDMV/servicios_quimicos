@@ -3,8 +3,9 @@ import FormularioCrearClienteProveedor from "../components/Formularios/Formulari
 //import { obtenerClientes } from "../services";
 import { ClienteProveedor } from '../models/index'
 import ListaClienteProveedor from "../components/Tablas/ClienteProveedores/ListaClienteProveedor";
-
+import { headers } from "next/headers";
 export default async function ClienteProveedorPage() {
+  headers()
   let clientes
   try {
     const clientesRaw = await ClienteProveedor.findAll()
