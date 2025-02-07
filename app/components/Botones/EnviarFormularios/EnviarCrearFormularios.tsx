@@ -1,5 +1,5 @@
 'use client'
-import { crearProducto,crearClienteProveedor,crearMateriaPrima } from "@/app/services"
+import { crearProducto,crearClienteProveedor,crearMateriaPrima, crearUsuario } from "@/app/services"
 
 export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAlerta}:
     {
@@ -21,7 +21,6 @@ export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAle
 
 
     const enviarClienteProveedor = async () => {
-        console.log(datos)
           const nombre = datos.nombre
           const apellido = datos.apellido
           const email = datos.email
@@ -43,6 +42,16 @@ export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAle
             return consulta    
         }
       
+        const enviarUsuario = async () =>{
+            const nombre = datos.nombre
+            const apellido= datos.apellido
+            const cedula = datos.cedula
+            const telefono = datos.telefono
+            const email = datos.email
+            const password = datos.password
+            const consulta = await crearUsuario({nombre, apellido,cedula,telefono,email,password})
+            return consulta 
+        }
 
     const enviarDatos = async () =>{
         type RespuestaApi = {
@@ -62,6 +71,9 @@ export default function EnviarCrearFormularios({tipo,datos,setTipo,setMensajeAle
                 break
             case 'materiaPrima':
                 consulta = await enviarMateriaPrima()
+                break
+            case 'usuario':
+                consulta = await enviarUsuario()
                 break
         }
         

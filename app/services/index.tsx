@@ -5,7 +5,60 @@ import {
   tipoClienteProveedor,
   host,
   materiaPrimaProducto,
+  usuario,
+  login
 } from "../config";
+
+////////////////////////////////////USUARIO
+export async function loginUsuario({email,password}:any) {  
+  return fetch(`${host}${login}`,{
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      email: email,
+      password: password
+    })
+  })
+  .then(res=>res.json())
+  .then(res=>{console.log(res)
+    return res
+  })
+}
+
+export async function logoutUsuario() {  
+  return fetch(`${host}${login}`,{
+    method: 'GET',
+    headers: {
+      'Content-type': 'application/json'
+    },
+  })
+  .then(res=>res.json())
+  .then(res=>{console.log(res)
+    return res
+  })
+}
+
+
+export async function crearUsuario({nombre,apellido,cedula,telefono,email,password}:any){
+  return fetch(`${host}${usuario}`,{
+    method: 'POST',
+    headers:{
+      'Content-type' : 'application/json'
+    },
+    body: JSON.stringify({
+      nombre: nombre,
+      apellido: apellido,
+      cedula: cedula,
+      telefono: telefono,
+      email: email,
+      password: password
+    })
+  })
+  .then(res=> res.json())
+  .then(res=>res)
+}
 
 /////////////////////////////////////TIPO CLIENTE PROVEEDOR
 

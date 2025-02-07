@@ -8,6 +8,7 @@ import Producto from "./Producto.model";
 import ProductoMateriaPrima from "./ProductoMateriaPrima.model";
 import ClientePedido from "./ClientePedido.module";
 import Precio from "./Precio.model";
+import Usuario from "./Usuario.model"
 
 (async () => {
     try {
@@ -31,5 +32,6 @@ export {
     Producto,
     ProductoMateriaPrima,
     ClientePedido,
-    Precio
+    Precio,
+    Usuario
 }

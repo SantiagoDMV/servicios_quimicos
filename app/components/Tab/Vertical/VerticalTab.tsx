@@ -2,9 +2,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BiMenu, BiX } from "react-icons/bi"; // Importamos iconos
+import { logoutUsuario } from "@/app/services";
 
 export default function VerticalTab() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const logoutSesion = async() =>{
+    await logoutUsuario()
+    window.location.href = ('/login')
+  }
 
   return (
     <div >
@@ -57,9 +63,9 @@ export default function VerticalTab() {
           <Link href="/clienteproveedor" className="block p-2 rounded-md hover:bg-green-600">
             <i className="bi bi-chat-left-text-fill"></i> Clientes/Proveedores
           </Link>
-          <Link href="/logout" className="block p-2 rounded-md hover:bg-red-600">
+          <div className=" cursor-pointer block p-2 rounded-md hover:bg-red-600" onClick={()=>logoutSesion()}>
             <i className="bi bi-box-arrow-in-right"></i> Salir
-          </Link>
+          </div>
         </nav>
       </div>
     </div>

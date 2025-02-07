@@ -1,6 +1,5 @@
 import { MateriaPrima } from "../../models";
-
-export async function GET() {
+export async function GET() { 
     try{
     const materias = await MateriaPrima.findAll()
     return Response.json(materias)

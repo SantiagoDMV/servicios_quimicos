@@ -1,6 +1,6 @@
 import { Producto } from "../../models";
 
-export async function GET() {
+export async function GET() {    
     const productos = await Producto.findAll()
     if (productos.length > 0)
         return Response.json(productos)
