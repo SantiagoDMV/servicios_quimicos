@@ -47,7 +47,7 @@ export default function CardInformacion({ productoObtenido }: any) {
                   className="inline-flex flex-col items-center justify-center px-5 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-800 group border-x dark:border-gray-600"
                 >
                   <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
-                    Presentación
+                    Ficha Tec.
                   </span>
                   <span className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-500">
                     {producto.presentación ? producto.presentación : "-"}

@@ -242,6 +242,7 @@ export async function actualizarProducto({
   nombre,
   stock,
   precio,
+  presentacion
 }: any) {
   return fetch(`${host}${productos}`, {
     method: "PUT",
@@ -254,6 +255,7 @@ export async function actualizarProducto({
       nombre: nombre,
       stock: stock,
       precio: precio,
+      presentacion: presentacion
     }),
   })
     .then((res) => res.json())

@@ -26,16 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-full`}
       >
-
-<div className="md:flex">
-    <VerticalTab/>
-    <div className="p-6 pt-20 md:pt-6 bg-gray-50 text-medium text-black dark:text-gray-400 dark:bg-gray-800 rounded-lg w-full">
-    {children}
-    </div>
-</div>
-        
+        <div className="md:flex min-h-screen ">
+          <VerticalTab />
+          <div className="p-6 pt-20 md:pt-6  bg-gray-50 text-medium text-black dark:text-gray-400 dark:bg-gray-800 w-full">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );

@@ -71,6 +71,7 @@ export async function DELETE(req) {
 export async function PUT(req) {
     try {
         const body = await req.json()
+        
         if(body.preparacion){
             try {
                 await Producto.update({

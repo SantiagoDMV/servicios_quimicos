@@ -1,5 +1,4 @@
 import Crear from "../components/Botones/Crear/Crear";
-import { obtenerMateriasPrimas } from "../services";
 import FormularioCrearMateriaPrima from "../components/Formularios/FormularioCrearMateriaPrima/FormularioCrearMateriaPrima";
 import ListaMateriasPrimas from "../components/Tablas/MateriasPrimas/ListaMateriasPrimas";
 import { MateriaPrima } from '../models/index'

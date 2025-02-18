@@ -1,19 +1,31 @@
 'use client'
 import { useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { BiMenu, BiX } from "react-icons/bi"; // Importamos iconos
 import { logoutUsuario } from "@/app/services";
 
 export default function VerticalTab() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bandLogin, setBandLogin] = useState(false)
+useEffect(()=>{
+  const cambio_bandera_login =  () =>{
+    if(window.location.pathname !== '/login')  
+      setBandLogin(true)
+  }
+  cambio_bandera_login()
+},[])
 
   const logoutSesion = async() =>{
     await logoutUsuario()
     window.location.href = ('/login')
   }
-
+  
   return (
-    <div >
+    <>
+    {
+      bandLogin == true &&
+      <div >
       {/* Barra superior cuando la pantalla es pequeña */}
       <div className="fixed lg:hidden top-0 left-0 w-full bg-green-800 p-3 flex justify-between items-center text-white z-50">
         {/* <h1 className="text-lg font-bold">Servicios Químicos</h1> */}
@@ -24,7 +36,7 @@ export default function VerticalTab() {
 
       {/* Menú lateral o desplegable desde arriba */}
       <div
-        className={`fixed top-0 left-0 w-full lg:w-[300px] bg-green-900 text-white h-screen p-4 transition-transform ${
+        className={`fixed top-0 left-0 w-full lg:w-[300px] min-h-full bg-green-900 text-white h-screen p-4 transition-transform ${
           menuOpen ? "translate-y-0" : "-translate-y-full lg:translate-y-0"
         } lg:relative lg:h-auto lg:translate-y-0 z-40`}
       >
@@ -68,6 +80,8 @@ export default function VerticalTab() {
           </div>
         </nav>
       </div>
-    </div>
+    </div>  
+    }
+    </>
   );
 }

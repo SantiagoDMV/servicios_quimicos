@@ -17,13 +17,16 @@ export default function EnviarActualizarFormularios({
     const nombre = datos.nombre;
     const stock = datos.stock;
     const precio = datos.precio;
-
+    const presentacion = datos.presentacion
+    
+  
     const consulta = await actualizarProducto({
       id,
       codigo,
       nombre,
       stock,
       precio,
+      presentacion
     });
     return consulta;
   };

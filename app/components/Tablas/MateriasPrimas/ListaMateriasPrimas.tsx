@@ -64,9 +64,6 @@ export default function ListaMateriasPrimas({ producto }: any) {
                 <th scope="col" className="px-6 py-3">
                   Precio
                 </th>
-                <th scope="col" className="px-6 py-3">
-                  Proveedor
-                </th>
                 <th scope="col" className="px-6 py-3"></th>
               </tr>
             }
@@ -86,7 +83,6 @@ export default function ListaMateriasPrimas({ producto }: any) {
                   </th>
                   <td className="px-6 py-4">{e.stock} KG</td>
                   <td className="px-6 py-4">{e.precio}</td>
-                  <td className="px-6 py-4">{e.id_proveedor}</td>
 
                   <td className="flex items-center px-6 py-4">
                     <span
